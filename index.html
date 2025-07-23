@@ -1,327 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivek Yadav | Portfolio</title>
-    <link rel="stylesheet" href="nwe.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Spline Viewer -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.20/build/spline-viewer.js"></script>
-    <!--icons -->
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shivek Yadav | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Shivek Yadav – Web Developer & AI Enthusiast Portfolio">
+  <meta name="keywords" content="Shivek Yadav, Web Developer, AI, JavaScript, Portfolio">
+  <meta name="author" content="Shivek Yadav">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <!-- Boxicons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.20/build/spline-viewer.js"></script>
 </head>
-
 <body>
-    <nav class="navbar" id="navbar">
-        <h1 class="logo">SHIVEK</h1>
-        <ul class="menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#project">Projects</a></li>
-            <li><a href="#about">About Me</a></li>
 
-            <li><a href="#contact">Contact us</a></li>
-        </ul>
-        <button class="btn1">Resume</button>
-    </nav>
-    <!-----------------------------------------------home---------->
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar" role="navigation">
+    <h1 class="logo">SHIVEK</h1>
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="SHIVEK YADAV_CV.pdf" class="btn1" download aria-label="Download Resume">Download CV</a>
+    <label class="theme-switch">
+      <input type="checkbox" id="mode-toggle">
+      <span class="slider"></span>
+    </label>
+  </nav>
 
-    <section class="home" id="home">
-        <div class="main-area">
-            <h1 class="name">Shivek Yadav</h1>
-            <p class="titles">
-                <span class="typing"></span>
-            </p>
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="main-area">
+      <h1>Hi, I'm <span class="highlight">Shivek Yadav</span></h1>
+      <p class="titles"><span class="typing"></span></p>
+      <a href="#projects" class="cta-button">View Projects</a>
+    </div>
+    <div class="model-area">
+      <spline-viewer url="https://prod.spline.design/i1COjWdy3KF350KU/scene.splinecode"></spline-viewer>
+    </div>
+  </section>
+
+  <!-- Typing Effect -->
+  <script>
+    const titles = ["Frontend Developer", "Web Designer", "Shopify Developer", "WordPress Developer"];
+    let idx = 0, jdx = 0, isDeleting = false;
+    const el = document.querySelector(".typing");
+    function typeEffect() {
+      const full = titles[idx];
+      if (!isDeleting) el.textContent = full.substring(0, ++jdx);
+      else el.textContent = full.substring(0, --jdx);
+
+      if (jdx === full.length) isDeleting = true;
+      if (isDeleting && jdx === 0) { isDeleting = false; idx = (idx + 1) % titles.length; }
+      setTimeout(typeEffect, isDeleting ? 100 : 200);
+    }
+    document.addEventListener("DOMContentLoaded", typeEffect);
+  </script>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2 class="section__title">About Me</h2>
+    <div class="about__container container grid">
+      <div class="about__perfil">
+        <img src="bg.png"
+             alt="Shivek Yadav" class="perfil__img">
+      </div>
+      <div class="about__content grid">
+        <div class="about__info">
+          <h3>Web Developer & AI Enthusiast</h3>
+          <p>I'm passionate about <b>web development</b>, <b>programming</b>, and <b>AI</b>. Skilled in Python, HTML, CSS3, MongoDB, and environmental science.</p>
+          <a href="https://www.linkedin.com/in/shivek-yadav/" target="_blank" rel="noopener" class="button">Contact Me</a>
         </div>
-
-        <div class="model-area">
-            <spline-viewer url="https://prod.spline.design/i1COjWdy3KF350KU/scene.splinecode"></spline-viewer>
+        <div class="about__skills">
+          <h3>My Skills</h3>
+          <div class="skills-grid">
+            <!-- Skill icons -->
+            <div><img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="HTML"><p>HTML</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS"><p>CSS</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="JS"><p>JavaScript</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="Git"><p>Git</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="GitHub"><p>GitHub</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/codepen-icon.svg" alt="CodePen"><p>CodePen</p></div>
+            <div><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"><p>Figma</p></div>
+            <div><img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS Code"><p>VS Code</p></div>
+          </div>
         </div>
-    </section>
-
-    <script>
-        const titles = [
-            "Frontend Developer",
-            "Web Designer",
-            "Shopify Developer",
-            "WordPress Developer"
-        ];
-
-        let i = 0;
-        let j = 0;
-        let currentTitle = "";
-        let isDeleting = false;
-        const typingElement = document.querySelector(".typing");
-
-        function type() {
-            if (i < titles.length) {
-                if (!isDeleting && j <= titles[i].length) {
-                    currentTitle = titles[i].slice(0, j++);
-                    typingElement.textContent = currentTitle;
-                }
-
-                if (isDeleting && j <= titles[i].length) {
-                    currentTitle = titles[i].slice(0, --j);
-                    typingElement.textContent = currentTitle;
-                }
-
-                if (j === titles[i].length) {
-                    isDeleting = true;
-                }
-
-                if (isDeleting && j === 0) {
-                    isDeleting = false;
-                    i++;
-                }
-
-                if (i === titles.length) {
-                    i = 0;
-                }
-            }
-            setTimeout(type, isDeleting ? 100 : 200);
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            type();
-        });
-    </script>
-    <!-------------------home is end hare-------------------------->
-    <section>
-</nav>
-<!--==================== ABOUT ====================-->
-<section class="about section" id="about">
-  <div class="section__title">
-    My Personal  details
-     </div>
-
-  <div class="about__container about__page container grid">
-    <div class="about__perfil perfil">
-      <div class="perfil__content">
-        <img src="https://media.licdn.com/dms/image/v2/D5603AQEsNVdZJxb-tw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1724843218296?e=1730332800&v=beta&t=c1K4DiG4jrmpQ3GMjkK7J_cUib7Q9gMILEMnGla_TXw" alt="image" class="perfil__img">
-
       </div>
     </div>
+  </section>
 
-    <div class="about__content grid">
-      <div class="about__data grid">
-        <div class="about__info grid">
-          <h1 class="about__name">Shivek Yadav</h1>
-          <h2 class="about__profession">Web Developer & AI Enthusiast</h2>
-          <p class="about__description">
-            Passionate about <b>web development</b>, <b>programming</b>, and <b>artificial intelligence</b>,<br> I have a keen interest in <b>Python</b> and technologies like <b>HTML</b>, <b>CSS3</b>, and <b>MongoDB</b>.<br> I’m also enthusiastic about <b>environmental science</b> and <b>sustainability</b>.
-          </p>
-        </div>
-
-        <a href="https://www.linkedin.com/in/shivek-yadav/" class="about__button button">Contact Me</a>
-      </div>
-
-      <div class="about__skills">
-        <h3 class="about__skills-title">My Skills Are</h3>
-
-        <div class="about__skills-content grid">
-
-          <div class="about__skills-img">
-            <!-- HTML -->
-            <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="image HTML" class="about__skills-img">
-            <p class="about__skills-hover-text">HTML</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- CSS -->
-            <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="image CSS" class="about__skills-img">
-            <p class="about__skills-hover-text">CSS</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- JavaScript -->
-            <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg" alt="image JavaScript" class="about__skills-img">
-            <p class="about__skills-hover-text">JavaScript</p>
-          </div>
-
-
-          <div class="about__skills-img">
-            <!-- Git -->
-            <img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="image Git" class="about__skills-img">
-            <p class="about__skills-hover-text">Git</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- GitHub -->
-            <img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="image GitHub" class="about__skills-img">
-            <p class="about__skills-hover-text">GitHub</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- CodePen -->
-            <img src="https://cdn.worldvectorlogo.com/logos/codepen-icon.svg" alt="image CodePen" class="about__skills-img">
-            <p class="about__skills-hover-text">CodePen</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- Figma -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1667px-Figma-logo.svg.png" alt="image Figma" class="about__skills-img">
-            <p class="about__skills-hover-text">Figma</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- Windows -->
-            <img src="https://cdn.worldvectorlogo.com/logos/microsoft-windows-11.svg" alt="image Windows" class="about__skills-img">
-            <p class="about__skills-hover-text">Windows</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- macOS -->
-            <img src="https://cdn.worldvectorlogo.com/logos/apple-14.svg" alt="image macOS" class="about__skills-img">
-            <p class="about__skills-hover-text">macOS</p>
-          </div>
-
-          <div class="about__skills-img">
-            <!-- VSCode -->
-            <img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="image VS Code" class="about__skills-img">
-            <p class="about__skills-hover-text">VSCode</p>
-          </div>
-
-
-          </div>
-        </div>
-      </div>
+  <!-- Projects Section -->
+<section id="projects">
+  <h2 class="section__title">Featured Projects</h2>
+  <div class="projects-grid">
+    <!-- Project cards -->
+    <div class="project-card">
+      <h3>Docmate</h3>
+      <p>Stress & depression management via audio, reading, yoga & therapy tools.</p>
+      <a href="https://github.com/shivek78/Docmate" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Easy Health Care</h3>
+      <p>Hackathon UI design to streamline hospital workflows.</p>
+      <a href="https://github.com/shivek78/NextQuantum" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Easy2Math</h3>
+      <p>Tool for solving geometry, quadratic, and math problems.</p>
+    </div>
+    <div class="project-card">
+      <h3>Restaurant Website</h3>
+      <p>Responsive restaurant layout built with HTML/CSS.</p>
+      <a href="https://github.com/shivek78/resturant" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Voting System (C++)</h3>
+      <p>Console-based voting system implementation.</p>
+      <a href="https://github.com/shivek78/voting_system" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Banking System (C++)</h3>
+      <p>A bank management tool with account creation & balance checking.</p>
+      <a href="https://github.com/shivek78/banking-managements-system" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>First Website</h3>
+      <p>My first HTML/CSS learning project.</p>
+      <a href="https://github.com/shivek78/website-1" target="_blank">GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Amazon Clone</h3>
+      <p>Amazon homepage recreation shared via LinkedIn.</p>
+      <a href="https://www.linkedin.com/posts/shivek-yadav_css-is-complete-to-get-the-all-code-activity-7165431587319263232-FEyJ" target="_blank">LinkedIn</a>
     </div>
   </div>
 </section>
 
-    </section>
-    <section id="project">
 
-    <div class="section__title">
- my project details
-  </div>
-
-  <div class="projects">
-      <div class="project-card">
-          <img src="" alt="Docmate">
-          <div>
-              <h2>Docmate</h2>
-              <p>DocMate helps individuals manage stress and depression through various therapeutic services including audio, reading, yoga, and talking therapies.</p>
-              <a href="https://github.com/shivek78/Docmate" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Easy Health Care">
-          <div>
-              <h2>Easy Health Care</h2>
-              <p>Created during a college hackathon, this project provides a user-friendly interface to address hospital issues.</p>
-              <a href="https://github.com/shivek78/NextQuantum" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Easy2Math">
-          <div>
-              <h2>Easy2Math</h2>
-              <p>A platform offering tools to solve geometric shapes, quadratic equations, and other mathematical problems efficiently.</p>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Restaurant Website Layout">
-          <div>
-              <h2>Restaurant Website Layout</h2>
-              <p>[Add description if available]</p>
-              <a href="https://github.com/shivek78/resturant" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Voting System Using C++">
-          <div>
-              <h2>Voting System Using C++</h2>
-              <p>A voting system project created during training.</p>
-              <a href="https://github.com/shivek78/voting_system" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Banking System Using C++">
-          <div>
-              <h2>Banking System Using C++</h2>
-              <p>A banking system project in C++ with features like account management and balance checking.</p>
-              <a href="https://github.com/shivek78/banking-managements-system" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="First Website">
-          <div>
-              <h2>First Website</h2>
-              <p>My first website created after learning HTML.</p>
-              <a href="https://github.com/shivek78/website-1" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="BBC News Logo">
-          <div>
-              <h2>BBC News Logo</h2>
-              <p>Created while learning coding.</p>
-              <a href="https://github.com/shivek78/bbc-news" target="_blank">View on GitHub</a>
-          </div>
-      </div>
-
-      <div class="project-card">
-          <img src="URL_TO_IMAGE" alt="Amazon Clone">
-          <div>
-              <h2>Amazon Clone</h2>
-              <p>An Amazon clone created after learning CSS. Check out the LinkedIn post for more details.</p>
-              <a href="https://www.linkedin.com/posts/shivek-yadav_css-is-complete-to-get-the-all-code-activity-7165431587319263232-FEyJ?utm_source=share&utm_medium=member_desktop" target="_blank">View on LinkedIn</a>
-          </div>
-      </div>
-
-
-    </section>
-    <div class="section__title">
-      Contact Us
-       </div>
-    <section class="contact_us">
-      <form id="contactForm">
-          <h2>Contact Us</h2>
-
-          <!-- Honeypot field to help prevent spam -->
-          <input type="text" name="botcheck" class="botcheck" value="" />
-
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
-
-          <button type="submit">Send Message</button>
-      </form>
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section__title">Get in Touch</h2>
+    <div class="contact-details">
+      <p>Email: <a href="mailto:shivekyadav0786@gmail.com">shivekyadav0786@gmail.com</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/shivek-yadav" target="_blank">@shivek‑yadav</a></p>
+      <p>GitHub: <a href="https://github.com/shivek78" target="_blank">@shivek78</a></p>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-      <ul class="social_footer">
-          <li><a href="https://www.instagram.com/shivek_ydv"><box-icon type='logo' name='instagram' color="red" size="50px"></box-icon></a></li>
+    <ul class="social-footer">
+      <li><a href="https://github.com/shivek78" target="_blank"><i class='bx bxl-github'></i></a></li>
+      <li><a href="https://linkedin.com/in/shivek-yadav" target="_blank"><i class='bx bxl-linkedin'></i></a></li></ul>
 
-          <li><a href="https://www.snapchat.com/shivek_ydv"><box-icon type='logo' name='snapchat' color="red" size="50px"></box-icon></a></li>
-
-          <li><a href="https://www.twitter.com/shivek_ydv"><box-icon type='logo' name='twitter' color="red" size="50px"></box-icon></a></li>
-
-          <li><a href="https://www.linkedin.com/in/shivek-yadav"><box-icon type='logo' name='linkedin' color="red" size="50px"></box-icon></a></li>
-
-          <li><a href="https://github.com/shivek78"><box-icon type='logo' name='github' color="red" size="50px"></box-icon></a></li></a></li>
-
-      </ul>
-      <p style="color: white;">&copy; 2024 shivek Yadav. All rights reserved.</p>
   </footer>
-    </section>
+
 </body>
-<script src="script.js"></script>
 </html>
+

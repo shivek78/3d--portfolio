@@ -1,77 +1,57 @@
 // Typing Effect
 const typingElement = document.querySelector('.typing');
-const textArray = ['Web Developer', 'AI Enthusiast', 'Problem Solver'];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+const textArray = ['Web Developer', 'AI Enthusiast', 'Problem Solver', 'UI Designer'];
+let textIndex = 0, charIndex = 0, isDeleting = false;
 
-function type() {
-    if (textIndex < textArray.length) {
-        const currentText = textArray[textIndex];
-        if (charIndex < currentText.length) {
-            typingElement.textContent += currentText.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, isDeleting ? 100 : 150);
-        } else {
-            isDeleting = true;
-            setTimeout(type, 1000); // Delay before starting to delete
-        }
-    } else if (isDeleting && charIndex > 0) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-        setTimeout(type, 100);
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % textArray.length;
-        setTimeout(type, 500); // Delay before typing next text
+function typeEffect() {
+  if (!typingElement) return;
+  const currentText = textArray[textIndex];
+
+  typingElement.textContent = currentText.substring(0, charIndex);
+
+  if (!isDeleting) {
+    charIndex++;
+    if (charIndex > currentText.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1000);
+      return;
     }
-}
+  } else {
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      textIndex = (textIndex + 1) % textArray.length;
+    }
+  }
 
-document.addEventListener('DOMContentLoaded', type);
+  setTimeout(typeEffect, isDeleting ? 80 : 150);
+}
+document.addEventListener('DOMContentLoaded', typeEffect);
 
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
-//
-// Responsive Navbar Toggle
-const navbarMenu = document.querySelector('.menu');
-const menuToggle = document.querySelector('.menu-toggle');
-
-menuToggle.addEventListener('click', () => {
-    navbarMenu.classList.toggle('active');
+// Back to Top Button
+const backToTopBtn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTopBtn.classList.toggle("visible", window.scrollY > 300);
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        const formData = new FormData(form);
-
-        fetch('https://your-form-endpoint-url.com', { // Update with your form handling URL
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                // Redirect to the home page if submission is successful
-                window.location.href = 'index.html'; // Update with your home page URL
-            } else {
-                // Handle errors here
-                console.error('Form submission failed.');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// Dark Mode Toggle
+const modeToggle = document.getElementById("mode-toggle");
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  modeToggle.checked = true;
+}
+modeToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark-mode");
+  localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+});
